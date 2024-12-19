@@ -6,15 +6,17 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Wallet;
 use App\Models\Transaction;
+use App\AppServices\WalletService;
 use JWTAuth;
 
 class UserController extends Controller
 {
     //
-public function __construct(User $user, Wallet $wallet, Transaction $transact){
+public function __construct(User $user, Wallet $wallet, Transaction $transact, WalletService $walletService){
   $this->user = $user;
   $this->wallet = $wallet;
   $this->transact = $transact;
+  $this->walletService = $walletService;
   $this->profile = JWTAuth::parseToken()->authenticate();
    
   $this->result = (object)array(
@@ -50,7 +52,7 @@ if(count($profile) > 0){
            'currency_type' => $prof->currency_type,
            'monthly_interest_percentage' => $prof->monthly_interest_percentage,
            'balance' => $prof->balance,
-           'transaction_history' => (!count($this->transact->where('sender_wallet_id', $prof->id)->orWhere('reciepient_wallet_id', $prof->id)->get()) > 0 ) ? null : $this->transact->where('sender_wallet_id', $prof->id)->orWhere('reciepient_wallet_id', $prof->id)->paginate(20)
+           'transaction_history' => (!count($this->transact->where('sender_wallet_id', $prof->id)->orWhere('reciepient_wallet_id', $prof->id)->get()) > 0 ) ? null : $this->walletService->transactionData($this->transact->where('sender_wallet_id', $prof->id)->orWhere('reciepient_wallet_id', $prof->id)->paginate(20))
     ];
   
     }
