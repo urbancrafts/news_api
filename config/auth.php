@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'api',
         'passwords' => 'users',
     ],
 
@@ -36,25 +36,19 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
+        // 'web' => [
+        //     'driver' => 'jwt',
+        //     'provider' => 'users',
+        //     // 'hash' => false,
+        // ],
+
+        'api' => [
+            'driver' => 'jwt',
             'provider' => 'users',
+            'hash' => false,
         ],
 
-        'admin' => [
-            'driver' => 'session',
-            'provider' => 'admins',
-        ],
-
-        'candidate' => [
-            'driver' => 'session',
-            'provider' => 'candidates',
-        ],
-
-        'recruiter' => [
-            'driver' => 'session',
-            'provider' => 'recruiters',
-        ],
+       
     ],
 
     /*
@@ -80,20 +74,27 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        'admins' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Admin::class,
-        ],
+        // 'apiuser' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\User::class,
+        // ],
 
-        'candidates' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Candidate::class,
-        ],
+        
 
-        'recruiters' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Recruiter::class,
-        ],
+        // 'admins' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Admin::class,
+        // ],
+
+        // 'candidates' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Candidate::class,
+        // ],
+
+        // 'recruiters' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Recruiter::class,
+        // ],
 
         // 'users' => [
         //     'driver' => 'database',
