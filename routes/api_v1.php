@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Providers\ApiRouteInjector;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
 
-
-
+// Load API-related files from the 'api' directory and subdirectories
+ApiRouteInjector::injectRoutes(__DIR__ . '/api/v1');

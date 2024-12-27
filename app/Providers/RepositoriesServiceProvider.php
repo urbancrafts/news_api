@@ -13,7 +13,11 @@ class RepositoriesServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        
+        $this->app->bind(
+            "App\Contracts\NewsInterface",
+            "App\Repositories\NewsRepository"
+           );
+       
     }
 
     /**
