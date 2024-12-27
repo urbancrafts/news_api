@@ -102,6 +102,24 @@ class ArticleFetcherService
     }
 
 
+
+public function fetchAllArticles(){
+    $query = $this->news->allNews()->orderBy('published_at', 'desc')->paginate(10);
+    if(count($query) > 0){
+        $this->result->status = true;
+        $this->result->message = " Articles fetched";
+        $this->result->data->values = $query;
+        $this->result->status_code = 200;
+        return response()->json($this->result, 200); 
+    }else{
+        $this->result->status = true;
+        $this->result->message = " No article found";
+        $this->result->data->values = [];
+        $this->result->status_code = 200;
+        return response()->json($this->result, 200);  
+    }
+}
+
 public function searchArticles($request){
 
     $query = $this->news->allNews()->query();

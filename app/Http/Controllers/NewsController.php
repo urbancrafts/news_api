@@ -12,8 +12,12 @@ class NewsController extends Controller
     $this->article = $article;
  }
 
- public function index(Request $request){
+ public function index(){
+    return $this->article->fetchAllArticles();
+ }
+
+ public function searchArticles(Request $request){
     return $this->article->searchArticles($request);
  }
- 
+
 }
