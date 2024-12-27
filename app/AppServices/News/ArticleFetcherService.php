@@ -119,7 +119,7 @@ public function searchArticles($request){
         }
 
         if ($request->has('date')) {
-            $query->orWhereDate('published_at', $request->date);
+            $query->whereDate('published_at', $request->date);
         }
 
         if(count($query->get()) > 0){
