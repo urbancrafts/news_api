@@ -31,7 +31,9 @@ SESSION_DRIVER=file
 SESSION_LIFETIME=120  
 
 NY_TIMES_API_KEY=73AqY4A7Gi3ZL0FUjb6cmoxQTY3uF0xX
+
 THE_GUARDIAN_API_KEY=7db17eac-e054-4b0f-872e-711164cbed7f
+
 NEWSAPI_DOTORG_KEY=3b5da69e15c64ec0af0b085c94a8d32a
 
 6. after pasting the the above content, ensure your databade credentials are used correctly in setting up your local MyQSL database machine. Afterwards, type "php artisan migrate" on your terminal to migrate your database schema to your MySQL server.
@@ -41,7 +43,9 @@ NEWSAPI_DOTORG_KEY=3b5da69e15c64ec0af0b085c94a8d32a
 the three credentials below are for the three integrated sources
 
 NY_TIMES_API_KEY=73AqY4A7Gi3ZL0FUjb6cmoxQTY3uF0xX
+
 THE_GUARDIAN_API_KEY=7db17eac-e054-4b0f-872e-711164cbed7f
+
 NEWSAPI_DOTORG_KEY=3b5da69e15c64ec0af0b085c94a8d32a
 
 
